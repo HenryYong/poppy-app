@@ -25,7 +25,7 @@ allRoutes.push(
         children: adminRoutes
     }
 )
-console.log(allRoutes)
+
 const router = new Router({
     mode: 'history',
     routes: allRoutes

@@ -20,7 +20,7 @@
 
     export default {
         mounted () {
-            console.log(this.$route)
+
         },
         components: {
             'side-menu': sideMenu

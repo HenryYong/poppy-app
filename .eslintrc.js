@@ -1,27 +1,25 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
-    root: true, // eslint不会再向父级查找
-    parser: 'babel-eslint',
-    parserOptions: {
-        sourceType: 'module'
+    "root": true, // eslint不会再向父级查找
+    "parser": 'babel-eslint',
+    "parserOptions": {
+        "sourceType": 'module'
     },
-    env: {
-        browser: true
+    "env": {
+        "browser": true
     },
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    extends: 'standard',
-    plugins: [
+    "extends": 'standard',
+    "plugins": [
         'html'
     ],
-    globals: {
+    "globals": {
         // 允许重写的变量
         NODE_ENV: true,
         COMMON_AJAX_URL: true,
         AJAX_URL: true
     },
     // custom rules
-    rules: {
+    "rules": {
         'operator-linebreak': 'off',
         // 在开发阶段打开调试
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
@@ -80,4 +78,4 @@ module.exports = {
         'no-useless-escape': 'off',
         'brace-style': 0
     }
-}
+};

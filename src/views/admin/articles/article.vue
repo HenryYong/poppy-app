@@ -343,7 +343,7 @@
 
                             this.$message.success(res.message)
                         } catch (err) {
-                            console.log(err)
+                            console.error(err)
                             this.$message.error(`${err.data ? err.data.message : err}`)
                         } finally {
                             this.loading = false

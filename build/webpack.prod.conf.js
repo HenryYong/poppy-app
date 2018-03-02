@@ -45,7 +45,7 @@ const webpackConfig = merge(baseConfig, {
         new UglifyJS({
             uglifyOptions: {
                 compress: {
-                    warning: false
+                    warnings: false
                 }
             },
             parallel: true,

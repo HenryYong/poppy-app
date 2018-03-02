@@ -10,9 +10,9 @@ import prodEnvVar from './prod.env_var'
 export default {
     build: {
         envVar: prodEnvVar,
-        assetsRoot: path.resolve(__dirname, '../admin'),
+        assetsRoot: path.resolve(__dirname, '../dist'),
         assetsPublicPath: '/',
-        assetsSubDirectory: 'admin/static',
+        assetsSubDirectory: 'app/static',
         productionSourceMap: true,
         productionGzip: false,
         productionGzipExtensions: ['js', 'css'],

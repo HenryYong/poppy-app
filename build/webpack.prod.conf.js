@@ -45,60 +45,60 @@ const webpackConfig = merge(baseConfig, {
         // new UglifyJS({
         //     uglifyOptions: {
         //         compress: {
-        //             warning: false
+        //             warnings: false
         //         }
         //     },
         //     parallel: true,
         //     sourceMap: true
         // }),
-        new ExtractTextPlugin({
-            filename: assetsPath('css/[name].[contenthash].css')
-        }),
-        new OptimizeCSSAssetsPlguin({
-            cssProcessorOptions: {
-                safe: true
-            }
-        }),
-        new HtmlWebpackPlugin({
-            // filename: config.build.assetsRoot + sep + config.build.assetsSubDirectory + '/index.html',
-            filename: resolve(config.build.assetsRoot + sep + config.build.assetsSubDirectory, '..') + '/index.html',
-            template: 'index.html',
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-            },
-            // 如果打开 vendor 和 manifest 那么需要配置 chunksSortMode 保证引入 script 的顺序
-            chunksSortMode: 'dependency'
-        }),
-        new webpack.HashedModuleIdsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: ({ resource }) => (
-                resource
-                && resource.indexOf('node_modules') >= 0
-                && resource.match(/\.js$/)
-            )
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            async: 'common-lazy',
-            minChunks: ({ resource } = {}) => (
-                resource
-                && resource.includes('node_modules')
-            )
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            async: 'twice',
-            minChunks: (module, count) => (count >= 2)
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: resolve(__dirname, '../static'),
-                to: config.build.assetsSubDirectory,
-                ignore: ['.*']
-            }
-        ])
+        // new ExtractTextPlugin({
+        //     filename: assetsPath('css/[name].[contenthash].css')
+        // }),
+        // new OptimizeCSSAssetsPlguin({
+        //     cssProcessorOptions: {
+        //         safe: true
+        //     }
+        // }),
+        // new HtmlWebpackPlugin({
+        //     // filename: config.build.assetsRoot + sep + config.build.assetsSubDirectory + '/index.html',
+        //     filename: resolve(config.build.assetsRoot + sep + config.build.assetsSubDirectory, '..') + '/index.html',
+        //     template: 'index.html',
+        //     inject: true,
+        //     minify: {
+        //         removeComments: true,
+        //         collapseWhitespace: true,
+        //         removeAttributeQuotes: true
+        //     },
+        //     // 如果打开 vendor 和 manifest 那么需要配置 chunksSortMode 保证引入 script 的顺序
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new webpack.HashedModuleIdsPlugin(),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     minChunks: ({ resource }) => (
+        //         resource
+        //         && resource.indexOf('node_modules') >= 0
+        //         && resource.match(/\.js$/)
+        //     )
+        // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     async: 'common-lazy',
+        //     minChunks: ({ resource } = {}) => (
+        //         resource
+        //         && resource.includes('node_modules')
+        //     )
+        // }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     async: 'twice',
+        //     minChunks: (module, count) => (count >= 2)
+        // }),
+        // new CopyWebpackPlugin([
+        //     {
+        //         from: resolve(__dirname, '../static'),
+        //         to: config.build.assetsSubDirectory,
+        //         ignore: ['.*']
+        //     }
+        // ])
     ]
 })
 

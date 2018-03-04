@@ -5,7 +5,7 @@
 
 import ajax from './ajax'
 
-const lsKey = `${NODE_ENV}.sephenry.cn`
+const lsKey = `${NODE_ENV === 'production' ? 'www' : `${NODE_ENV}`}.sephenry.cn`
 
 export default {
     validateUser () {

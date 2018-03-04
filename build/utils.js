@@ -17,7 +17,7 @@ export function cssLoaders (options = {}) {
     const cssLoader = {
         loader: 'css-loader',
         options: {
-            minimize: (process.env.NODE_ENV || '').split(':')[0] === 'prod',
+            minimize: (process.env.NODE_ENV || '').split(':')[0] === 'production',
             sourceMap: options.sourceMap
         }
     }

@@ -1,7 +1,7 @@
 {
-  "name": "poppy-admin",
+  "name": "poppy-app",
   "version": "0.0.1",
-  "description": "admin-side for poppy",
+  "description": "app for personal blog",
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev babel-node build/dev.js",
@@ -9,7 +9,8 @@
   },
   "keywords": [
     "admin",
-    "poppy"
+    "poppy",
+    "blog"
   ],
   "author": "Henry Yang <sephenry@gmail.com>",
   "license": "MIT",

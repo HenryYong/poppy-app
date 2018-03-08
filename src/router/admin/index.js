@@ -1,5 +1,5 @@
 /**
- * 路由配置
+ * admin路由配置
  * @author Henry Yang
  */
 
@@ -14,7 +14,7 @@ import Tags from './tags'
 import Categories from './categories'
 import Comments from './comments'
 
-let childrenArr = [
+let routesArr = [
     Common,
     Auth,
     Articles,
@@ -24,20 +24,10 @@ let childrenArr = [
     Categories,
     Comments
 ]
+let routes = []
 
-let childrenRoutes = []
-
-childrenArr.map(route => {
-    childrenRoutes.push(...route)
+routesArr.map(route => {
+    routes.push(...route)
 })
 
-// let routerArr = [
-//     // Auth
-// ]
-// let routes = []
-
-// routerArr.map(route => {
-//     routes = routes.concat(route)
-// })
-
-export default childrenRoutes
+export default routes

@@ -3,10 +3,16 @@ import Router from 'vue-router'
 import adminRoutes from './admin'
 import clientRoutes from './client'
 
-// 框架页
+// admin框架页
 const Admin = () => import(
     /* webpackChunkName: 'Admin' */
     './../views/admin/index'
+)
+
+// client框架页
+const Client = () => import(
+    /* webpackChunkName: 'Client' */
+    './../views/client/index'
 )
 // const None = () => import(
 //     /* webpackChunkName: 'None' */
@@ -23,6 +29,11 @@ allRoutes.push(
         path: '/admin',
         component: Admin,
         children: adminRoutes
+    },
+    {
+        path: '/',
+        component: Client,
+        children: clientRoutes
     }
 )
 

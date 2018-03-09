@@ -1,7 +1,6 @@
 @import './icon/style';
 @import './conf';
 @import './base/common';
-@import './components/form';
 
 .fl {
     float: left !important;
@@ -39,62 +38,6 @@
     font: {
         size: 12px;
         weight: normal;
-    }
-}
-
-.k-form {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid $grayLightest;
-    border-radius: 3px;
-    &-row {
-        display: flex;
-    }
-    &-label {
-        width: 120px;
-        height: 36px;
-        line-height: 36px;
-        padding-right: 20px;
-        font-size: 14px;
-        color: $grayDarker;
-        text-align: right;
-        &.k-required {
-            &:before {
-                content: '*';
-                margin-right: 5px;
-                color: $danger;
-            }
-        }
-    }
-    &-content {
-        width: calc(100% - 120px);
-        font-size: 14px;
-    }
-    &-btns {
-        padding-left: 120px;
-        font-size: 0;
-    }
-}
-
-.k-table {
-    width: 100%;
-    border-collapse: collapse;
-    &-item {
-        padding: 12px 8px;
-        border-bottom: 1px solid $grayLighter;
-        text-align: center;
-        font: {
-            size: 14px;
-            weight: normal;
-        }
-    }
-    &-row {
-        &:hover {
-            .k-table-item {
-                background-color: $grayLightest;
-            }
-        }
     }
 }
 

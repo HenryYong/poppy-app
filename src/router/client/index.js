@@ -9,16 +9,16 @@ import About from './about'
 import Archives from './archives'
 import Categories from './categories'
 import Contact from './contact'
-import List from './list'
 import Tags from './tags'
+import Articles from './articles'
 
 let routesArr = [
     About,
     Archives,
     Categories,
     Contact,
-    List,
-    Tags
+    Tags,
+    Articles
 ]
 let routes = []
 

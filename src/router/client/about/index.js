@@ -7,7 +7,7 @@ const About = () => import(
 const routes = [
     {
         path: 'about',
-        name: 'About',
+        name: 'ClientAbout',
         component: About
     }
 ]

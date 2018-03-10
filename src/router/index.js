@@ -31,7 +31,7 @@ allRoutes.push(
         children: adminRoutes
     },
     {
-        path: '/',
+        path: '',
         component: Client,
         children: clientRoutes
     }

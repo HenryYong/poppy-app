@@ -8,13 +8,15 @@ import Vuex from 'vuex'
 import ajax from 'src/utils/ajax'
 import auth from './auth'
 import admin from './admin'
+import client from './client'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
         auth,
-        admin
+        admin,
+        client
     },
     // 公共state
     state: {

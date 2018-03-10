@@ -12,13 +12,19 @@ const ArticleDetail = () => import(
 
 const routes = [
     {
+        path: '',
+        redirect: {
+            name: 'ClientArticlesList'
+        }
+    },
+    {
         path: 'articles',
-        name: 'ArticlesList',
+        name: 'ClientArticlesList',
         component: ArticlesList
     },
     {
         path: 'articles/:articleId',
-        name: 'ArticleDetail',
+        name: 'ClientArticleDetail',
         component: ArticleDetail
     }
 ]

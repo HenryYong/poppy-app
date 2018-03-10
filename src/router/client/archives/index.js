@@ -7,7 +7,7 @@ const Archives = () => import(
 const routes = [
     {
         path: 'archives',
-        name: 'Archives',
+        name: 'ClientArchives',
         component: Archives
     }
 ]

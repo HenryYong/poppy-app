@@ -7,7 +7,7 @@ const Categories = () => import(
 const routes = [
     {
         path: 'categories',
-        name: 'Categories',
+        name: 'ClientCategories',
         component: Categories
     }
 ]

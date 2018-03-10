@@ -7,7 +7,7 @@ const Contact = () => import(
 const routes = [
     {
         path: 'contact',
-        name: 'Contact',
+        name: 'ClientContact',
         component: Contact
     }
 ]

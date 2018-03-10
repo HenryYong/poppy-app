@@ -7,7 +7,7 @@ const Tags = () => import(
 const routes = [
     {
         path: 'tags',
-        name: 'Tags',
+        name: 'ClientTags',
         component: Tags
     }
 ]

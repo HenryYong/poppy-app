@@ -18,6 +18,12 @@
     text-align: left !important;
 }
 
+.text-overflow {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .inner-title {
     margin-bottom: 20px;
     font-size: 22px;

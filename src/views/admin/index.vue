@@ -5,8 +5,12 @@
         <div class="poppy-admin-container">
             <header class="poppy-admin-header">
                 <ul class="tools">
-                    <li class="tools-item">
+                    <!-- <li class="tools-item">
                         <i class="tools-item-icon icon-indent-decrease"></i>
+                    </li> -->
+                    <li class="tools-item"
+                        @click="logout">
+                        <i class="tools-item-icon icon-switch"></i>
                     </li>
                 </ul>
             </header>
@@ -31,8 +35,13 @@
     Vue.prototype.$confirm = MessageBox.confirm
 
     export default {
-        mounted () {
-
+        methods: {
+            logout () {
+                localStorage.removeItem(`${NODE_ENV === 'production' ? 'www' : NODE_ENV}.sephenry.cn`)
+                this.$router.push({
+                    name: 'Auth'
+                })
+            }
         },
         components: {
             'side-menu': sideMenu

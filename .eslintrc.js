@@ -16,7 +16,9 @@ module.exports = {
         // 允许重写的变量
         NODE_ENV: true,
         COMMON_AJAX_URL: true,
-        AJAX_URL: true
+        AJAX_URL: true,
+        ADMIN_AJAX_URL: true,
+        CLIENT_AJAX_URL: true
     },
     // custom rules
     "rules": {

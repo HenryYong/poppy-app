@@ -4,15 +4,21 @@
  */
 
 let settings = {}
+const {
+    stringify
+} = JSON
+const url = 'http://www.sephenry.cn/api'
 
 if (process.env.NODE_ENV !== 'development') {
     settings = {
         'process.env': {
-            'NODE_ENV': JSON.stringify('production')
+            'NODE_ENV': stringify('production')
         },
-        NODE_ENV: JSON.stringify('production'),
-        COMMON_AJAX_URL: JSON.stringify('http://www.sephenry.cn/api'),
-        AJAX_URL: JSON.stringify('http://www.sephenry.cn/api/admin')
+        NODE_ENV: stringify('production'),
+        COMMON_AJAX_URL: stringify(url),
+        AJAX_URL: stringify(`${url}/admin`),
+        ADMIN_AJAX_URL: stringify(`${url}/admin`),
+        CLIENT_AJAX_URL: stringify(`${url}/client`)
     }
 }
 

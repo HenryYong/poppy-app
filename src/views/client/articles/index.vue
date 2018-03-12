@@ -28,7 +28,7 @@
             }
         },
         mounted () {
-            this.$http.get(`${AJAX_URL}/articles/`).then(response => {
+            this.$http.get(`${CLIENT_AJAX_URL}/articles/`).then(response => {
                 console.log(response)
             })
         },

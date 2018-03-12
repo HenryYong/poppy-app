@@ -33,7 +33,7 @@ if (location.href.includes('admin')) {
         init()
     }, () => {
         localStorage.setItem('poppyBeforeLogin', 'AdminDashBoard')
-        location.replace = `http://${location.host}/admin/auth`
+        location.replace(`http://${location.host}/admin/auth`)
     })
 } else {
     init()

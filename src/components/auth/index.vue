@@ -3,18 +3,18 @@
         :class="type">
         <div class="k-form-row">
             <div class="k-form-content">
-                <k-input
+                <el-input
                     :value.sync="localUsername"
                     :origin-type="'text'"
                     :placeholder="'请输入用户名'"
                     :status="usernameStatus">
-                </k-input>
+                </el-input>
             </div>
         </div>
 
         <div class="k-form-row">
             <div class="k-form-content">
-                <k-input
+                <el-input
                     :value.sync="localPassword"
                     :origin-type="'password'"
                     :placeholder="'请输入密码'"
@@ -25,7 +25,7 @@
                             @click.stop="toggleVisible">
                         </i>
                     </template>
-                </k-input>
+                </el-input>
             </div>
         </div>
 
@@ -47,7 +47,10 @@
 </template>
 
 <script>
-    import Input from 'src/components/input'
+    // import Input from 'src/components/input'
+    import {
+        Input
+    } from 'element-ui'
 
     export default {
         props: {
@@ -108,7 +111,7 @@
             }
         },
         components: {
-            'k-input': Input
+            'el-input': Input
         }
     }
 </script>
@@ -129,13 +132,14 @@
                 border-color: #465a81;
             }
         }
-        .k-input-item {
+        .el-input__inner {
             border: {
                 top: none;
                 left: none;
                 right: none;
                 bottom: 1px solid $white;
             }
+            padding-left: 0;
             border-radius: 0;
             color: $white;
             background-color: transparent;

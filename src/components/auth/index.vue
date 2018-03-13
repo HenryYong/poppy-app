@@ -1,93 +1,69 @@
 <template>
-    <form class="k-form auth-component"
-        :class="type">
-        <div class="k-form-row">
-            <div class="k-form-content">
-                <el-input
-                    :value.sync="localUsername"
-                    :origin-type="'text'"
-                    :placeholder="'请输入用户名'"
-                    :status="usernameStatus">
-                </el-input>
-            </div>
-        </div>
+    <div class="auth-wrapper">
+        <!-- <p class="toggle-methods">
+            Sign in
+        </p> -->
+        <img class="auth-welcome" :src="logo" alt="logo">
+        <section class="auth-main">
+            <!-- sign in -->
+            <el-form
+                ref="form"
+                label-position="top"
+                label-width="80px"
+                :model="info">
+                <el-form-item label="Username">
+                    <el-input
+                        v-model="info.username"
+                        placeholder="Your username, pls">
+                    </el-input>
+                </el-form-item>
 
-        <div class="k-form-row">
-            <div class="k-form-content">
-                <el-input
-                    :value.sync="localPassword"
-                    :origin-type="'password'"
-                    :placeholder="'请输入密码'"
-                    :status="passwordStatus">
-                    <template slot="postAddon"
-                            v-if="type === 'signup'">
-                        <i class="icon-eye toggle-visible"
-                            @click.stop="toggleVisible">
-                        </i>
-                    </template>
-                </el-input>
-            </div>
-        </div>
+                <el-form-item label="Password">
+                    <el-input
+                        type="password"
+                        v-model="info.password"
+                        placeholder="Your password, pls">
+                    </el-input>
+                </el-form-item>
 
-        <div class="k-form-row submit-row">
-            <div class="k-form-content">
-                <a href="javascript:;" class="submit"
-                    @click="submit">
-                    <span class="icon-arrow-right"></span>
-                </a>
-            </div>
-        </div>
-
-        <div class="k-form-row forget-pw" v-if="type === 'login'">
-            <div class="k-form-content">
-                <span class="text">忘记密码</span> 
-            </div>
-        </div>
-    </form>
+                <el-form-item>
+                    <el-button class="main-btn" type="primary" @click="submit">Sign In</el-button>
+                </el-form-item>
+            </el-form>
+            <!-- sign in -->
+        </section>
+        <section class="auth-copyright">Copyright &copy; 2018 Henry YANG</section>
+    </div>
 </template>
 
 <script>
-    // import Input from 'src/components/input'
     import {
-        Input
+        Button,
+        Input,
+        Form,
+        FormItem
     } from 'element-ui'
+    import logoPNG from 'src/images/logo_trim.png'
 
     export default {
         props: {
-            type: {
-                type: String,
-                default: 'login'
-            },
-            username: {
-                type: [String, Number],
-                default: ''
-            },
-            password: {
-                type: [String, Number],
-                default: ''
+            info: {
+                type: Object,
+                default () {
+                    return {
+                        username: '',
+                        password: '',
+                        email: ''
+                    }
+                }
             }
         },
         data () {
             return {
-                usernameStatus: '',
-                passwordStatus: ''
-            }
-        },
-        computed: {
-            localUsername: {
-                get () {
-                    return this.username
-                },
-                set (val) {
-                    this.$emit('update:username', val)
-                }
-            },
-            localPassword: {
-                get () {
-                    return this.password
-                },
-                set (val) {
-                    this.$emit('update:password', val)
+                logo: null,
+                signInInfo: {
+                    username: '',
+                    password: ''
                 }
             }
         },
@@ -110,8 +86,14 @@
 
             }
         },
+        created () {
+            this.logo = logoPNG
+        },
         components: {
-            'el-input': Input
+            'el-button': Button,
+            'el-input': Input,
+            'el-form': Form,
+            'el-form-item': FormItem
         }
     }
 </script>
@@ -119,82 +101,40 @@
 <style lang="scss">
     @import './../../styles/conf';
 
-    .auth-component {
-        &.login {
-            .submit {
-                background-color: #3677f1;
-                border-color: #3677f1;
-            }
-        }
-        &.signup {
-            .submit {
-                background-color: #465a81;
-                border-color: #465a81;
-            }
-        }
-        .el-input__inner {
-            border: {
-                top: none;
-                left: none;
-                right: none;
-                bottom: 1px solid $white;
-            }
-            padding-left: 0;
+    .auth-wrapper {
+        padding: 20px 0;
+        border-right: 1px solid #fafafa;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, .035);
+        .main-btn {
             border-radius: 0;
-            color: $white;
-            background-color: transparent;
-            &:focus {
-                border-color: $white;
+        }
+        .auth-welcome {
+            margin-top: 20%;
+            padding: 0 50px;
+        }
+        .auth-main {
+            margin-top: 20%;
+            padding: 0 50px;
+            .el-form-item__label {
+                padding: 0;
+                line-height: 1;
+            }
+            .el-input__inner {
+                padding-left: 0;
+                border: {
+                    top: none;
+                    left: none;
+                    right: none;
+                }
+                border-radius: 0;
             }
         }
-        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            opacity: .8;
-            color: $white;
-        }
-
-        ::-moz-placeholder { /* Mozilla Firefox 19+ */
-            opacity: .8;
-            color: $white;
-        }
-
-        input:-ms-input-placeholder{
-            opacity: .8;
-            color: $white;
-        }
-
-        input::-webkit-input-placeholder{
-            opacity: .8;
-            color: $white;
-        }
-        .submit {
-            display: inline-block;
-            width: 80px;
-            height: 36px;
-            padding-top: 6px;
-            line-height: 1;
-            border: 1px solid transparent;
-            border-radius: 18px;
-            font-size: 22px;
-            color: $white;
-            text-align: center;
-            cursor: pointer;
-            &-row {
-                text-align: right;
-            }
-        }
-        .forget-pw {
-            .text {
-                border-bottom: 1px solid $white;
-                opacity: .7;
-                font-size: 12px;
-            }
-        }
-        .toggle-visible {
-            cursor: pointer;
-        }
-        .k-form-content {
-            width: 100%;
+        .auth-copyright {
+            position: absolute;
+            left: 30px;
+            bottom: 20px;
+            color: $fontLight;
+            font-size: 14px;
         }
     }
 </style>
-

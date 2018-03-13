@@ -134,6 +134,7 @@
             left: 30px;
             bottom: 20px;
             color: $fontLight;
+            font-size: 14px;
         }
     }
 </style>

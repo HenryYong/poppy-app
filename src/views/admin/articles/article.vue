@@ -302,10 +302,11 @@
                 } = this
                 // 提取文章描述
                 let description = renderContent.match(/^\<blockquote\>[\s\S]*\<\/blockquote\>/)
+                let articleContent = renderContent.replace(description, '')
                 let params = {}
                 
                 if (title) params.title = ruleArticle.title
-                if (content) params.content = ruleArticle.content
+                if (articleContent) params.content = articleContent
                 if (category) params.category = ruleArticle.category
                 if (tags.length) params.tags = tags.join(',')
                 if (seoTagList.length) params.seo_tags = seoTagList.join(',')
@@ -408,7 +409,7 @@
                 if (this.pageType === 'EditArticle') {
                     try {
                         let articleRes = await $store.dispatch('admin/requestOneArticle', this.$route.params.articleId)
-                        let response = articleRes.data[0]
+                        let response = articleRes.data
 
                         ruleArticle.title = response.title
                         ruleArticle.content = response.content

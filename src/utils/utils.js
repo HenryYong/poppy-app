@@ -39,3 +39,23 @@ export function prezero (num) {
         return $num
     }
 }
+
+export function isObject (obj) {
+    return obj !== null && Object.prototype.toString.call(obj).toLowerCase() === '[object object]'
+}
+
+/**
+ * 合并模块
+ * @param {Object} modules
+ */
+export function mergeModules (...modules) {
+    return modules.reduce((merged, curModule) => {
+        Object.keys(curModule).map(key => {
+            if (isObject(merged[key]) && isObject(curModule[key])) {
+                Object.assign(merged[key], curModule[key])
+            }
+        })
+
+        return merged
+    })
+}

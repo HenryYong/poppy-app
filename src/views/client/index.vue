@@ -23,7 +23,9 @@
                     </nav>
                 </div>
             </header>
-            <router-view></router-view>
+            <div style="padding: 40px 0;">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>

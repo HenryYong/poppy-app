@@ -1,40 +1,61 @@
 <template>
     <!-- <exception type="building"></exception> -->
     <div class="articles-list">
-        <section class="article-item">
+        <section class="article-item"
+            v-for="item of list"
+            :key="item.article_id"
+            @click="directToDetail(item.article_id)">
             <div class="title">
-                <div class="title-text text-overflow">title</div>
+                <div class="title-text text-overflow">{{ item.title }}</div>
             </div>
             <div class="subtitle">
-                <div class="subtitle-text text-overflow">subtitle</div>
+                <div class="subtitle-text text-overflow" v-html="item.description"></div>
                 <!-- <a href="javascript:;" class="text-link">阅读全文</a> -->
             </div>
             <p class="info">
-                <span class="time">2018-01-01 00:00:00</span>
+                <span class="time">{{ localFormatTime(item.create_time) }}</span>
             </p>
         </section>
-        <loading v-if="isLoading"></loading>
     </div>
 </template>
 
 <script>
     import exception from 'src/components/exception'
-    import loading from 'src/components/loading'
+    import {
+        formatTime
+    } from 'src/utils/utils'
 
     export default {
         data () {
             return {
-                isLoading: false
+                isLoading: false,
+                list: []
+            }
+        },
+        methods: {
+            localFormatTime (time) {
+                return formatTime(time)
+            },
+            /**
+             * 跳转详情
+             */
+            directToDetail (articleId) {
+                this.$router.push({
+                    name: 'ClientArticleDetail',
+                    params: {
+                        articleId
+                    }
+                })
             }
         },
         mounted () {
             this.$http.get(`${CLIENT_AJAX_URL}/articles/`).then(response => {
                 console.log(response)
+                this.list.splice(0, this.list.length, ...response.data)
             })
         },
         components: {
-            exception,
-            loading
+            exception
         }
     }
 </script>
@@ -44,7 +65,7 @@
 
     .articles-list {
         position: relative;
-        padding: 30px 60px;
+        padding: 0 60px;
     }
     .article-item {
         display: flex;

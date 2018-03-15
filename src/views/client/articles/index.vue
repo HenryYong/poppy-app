@@ -1,8 +1,10 @@
 <template>
     <!-- <exception type="building"></exception> -->
-    <div class="articles-list">
+    <div class="articles-list"
+        v-loading="loading">
         <section class="article-item"
             v-for="item of list"
+            v-if="list.length"
             :key="item.article_id"
             @click="directToDetail(item.article_id)">
             <div class="title">
@@ -16,11 +18,14 @@
                 <span class="time">{{ localFormatTime(item.create_time) }}</span>
             </p>
         </section>
+        <empty v-if="!list.length"></empty>
     </div>
 </template>
 
 <script>
     import exception from 'src/components/exception'
+    import empty from 'src/components/empty'
+    import { mapGetters } from 'vuex'
     import {
         formatTime
     } from 'src/utils/utils'
@@ -29,8 +34,14 @@
         data () {
             return {
                 isLoading: false,
-                list: []
+                list: [],
+                loading: false
             }
+        },
+        computed: {
+            ...mapGetters({
+                'articlesList': 'client/getArticlesList'
+            })
         },
         methods: {
             localFormatTime (time) {
@@ -48,14 +59,28 @@
                 })
             }
         },
-        mounted () {
-            this.$http.get(`${CLIENT_AJAX_URL}/articles/`).then(response => {
-                console.log(response)
-                this.list.splice(0, this.list.length, ...response.data)
-            })
+        async mounted () {
+            if (!this.articlesList.length) {
+                try {
+                    this.loading = true
+                    let response = await this.$store.dispatch('client/requestArticlesList')
+
+                    // this.list.splice(0, this.list.length, ...response.data)
+                } catch (err) {
+                    this.$message.error(`${err.data ? err.data.message : err}`)
+                    console.warn('获取标签接口错误')
+                } finally {
+                    setTimeout(() => {
+                        this.loading = false
+                    }, 200)
+                }
+            } else {
+                this.list.splice(0, this.list.length, ...this.articlesList)
+            }
         },
         components: {
-            exception
+            exception,
+            empty
         }
     }
 </script>

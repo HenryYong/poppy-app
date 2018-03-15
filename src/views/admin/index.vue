@@ -24,14 +24,9 @@
     import Vue from 'vue'
     import sideMenu from 'src/components/side-menu'
     import {
-        Message,
-        Loading,
         MessageBox
     } from 'element-ui'
 
-    Vue.use(Loading.directive)
-    
-    Vue.prototype.$message = Message
     Vue.prototype.$confirm = MessageBox.confirm
 
     export default {

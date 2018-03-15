@@ -302,11 +302,10 @@
                 } = this
                 // 提取文章描述
                 let description = renderContent.match(/^\<blockquote\>[\s\S]*\<\/blockquote\>/)
-                let articleContent = renderContent.replace(description, '')
                 let params = {}
                 
                 if (title) params.title = ruleArticle.title
-                if (articleContent) params.content = articleContent
+                if (content) params.content = content
                 if (category) params.category = ruleArticle.category
                 if (tags.length) params.tags = tags.join(',')
                 if (seoTagList.length) params.seo_tags = seoTagList.join(',')

@@ -1,11 +1,13 @@
 import ajax from 'src/utils/ajax'
 
 export const state = {
-    articlesDetail: {}
+    articlesDetail: {},
+    articlesList: []
 }
 
 export const getters = {
-    getArticlesDetail: state => state.articlesDetail
+    getArticlesDetail: state => state.articlesDetail,
+    getArticlesList: state => state.articlesList
 }
 
 export const mutations = {
@@ -17,15 +19,28 @@ export const mutations = {
      */
     updateArticlesDetail (state, { articleId, data }) {
         state.articlesDetail[articleId] = data
+    },
+    /**
+     * 更新文章列表
+     * @param {Object} state
+     * @param {Number} startIndex
+     * @param {Array} list
+     */
+    updateArticlesList (state, { startIndex = 0, list }) {
+        state.articlesList.splice(startIndex, 0, ...list)
     }
 }
 
 export const actions = {
     /**
-     * 获取文章列表
+     * 获取文章列表(暂时未考虑分页)
      */
     requestArticlesList ({ commit, state, dispatch }) {
         return ajax.get(`${CLIENT_AJAX_URL}/articles/`).then(response => {
+            commit('updateArticlesList', {
+                list: response.data
+            })
+
             return response
         })
     },

@@ -12,7 +12,7 @@
                                 v-for="item of navList"
                                 :key="item.id"
                                 :class="{
-                                    'active': $route.name === item.id
+                                    'active': $route.name === item.id || $route.meta.name === item.id
                                 }"
                                 @click="$router.push({
                                     name: item.id
@@ -23,7 +23,7 @@
                     </nav>
                 </div>
             </header>
-            <div style="padding: 40px 0;">
+            <div class="router-view-wrapper">
                 <router-view></router-view>
             </div>
         </div>
@@ -99,6 +99,9 @@
                     color: $fontDark;
                 }
             }
+        }
+        .router-view-wrapper {
+            padding: 40px 0;
         }
     }
 </style>

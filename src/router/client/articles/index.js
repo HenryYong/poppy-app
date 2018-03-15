@@ -25,7 +25,10 @@ const routes = [
     {
         path: 'articles/:articleId',
         name: 'ClientArticleDetail',
-        component: ArticleDetail
+        component: ArticleDetail,
+        meta: {
+            name: 'ClientArticlesList'
+        }
     }
 ]
 

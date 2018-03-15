@@ -5,6 +5,16 @@
 </template>
 
 <script>
+    // import public components
+    import Vue from 'vue'
+    import {
+        Message,
+        Loading
+    } from 'element-ui'
+
+    Vue.use(Loading.directive)
+    Vue.prototype.$message = Message
+
     export default {
         
     }

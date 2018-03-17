@@ -11,7 +11,7 @@ import webpack from 'webpack'
 import merge from 'webpack-merge'
 import UglifyJS from 'uglifyjs-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import HTMLWebpackPlugin from 'html-webpack-plugin'
 import OptimizeCSSAssetsPlguin from 'optimize-css-assets-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CompressionWebpackPlugin from 'compression-webpack-plugin'
@@ -26,7 +26,8 @@ import {
 
 const webpackConfig = merge(baseConfig, {
     entry: {
-        'main': './src/main.js'
+        'admin': './src/admin.js',
+        'client': './src/client.js'
     },
     module: {
         // rules: styleLoaders({
@@ -59,7 +60,7 @@ const webpackConfig = merge(baseConfig, {
                 safe: true
             }
         }),
-        new HtmlWebpackPlugin({
+        new HTMLWebpackPlugin({
             // filename: config.build.assetsRoot + sep + config.build.assetsSubDirectory + '/index.html',
             filename: resolve(config.build.assetsRoot + sep + config.build.assetsSubDirectory, '..') + '/index.html',
             template: 'index.html',
@@ -69,6 +70,7 @@ const webpackConfig = merge(baseConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
+            chunks: ['admin', 'client'],
             // 如果打开 vendor 和 manifest 那么需要配置 chunksSortMode 保证引入 script 的顺序
             chunksSortMode: 'dependency'
         }),

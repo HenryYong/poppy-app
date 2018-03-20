@@ -5,7 +5,6 @@
 
 import Vue from 'vue'
 import axios from 'axios'
-import auth from './auth'
 
 const instance = axios.create({
     validateStatus: status => {
@@ -19,12 +18,6 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(config => {
-    config.headers.common['Authorization'] = `Bearer ${auth.getJWT()}`
-
-    if (config.url.includes('upload_img/')) {
-        config.headers.common['Content-Type'] = 'multipart/form-data'
-    }
-
     return config
 }, error => {
     return Promise.reject(error)

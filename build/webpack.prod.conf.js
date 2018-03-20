@@ -26,8 +26,9 @@ import {
 
 const webpackConfig = merge(baseConfig, {
     entry: {
-        'admin': './src/admin.js',
-        'client': './src/client.js'
+        'main': './src/main.js'
+        // 'admin': './src/admin.js',
+        // 'client': './src/client.js'
     },
     module: {
         // rules: styleLoaders({
@@ -61,7 +62,6 @@ const webpackConfig = merge(baseConfig, {
             }
         }),
         new HTMLWebpackPlugin({
-            // filename: config.build.assetsRoot + sep + config.build.assetsSubDirectory + '/index.html',
             filename: resolve(config.build.assetsRoot + sep + config.build.assetsSubDirectory, '..') + '/index.html',
             template: 'index.html',
             inject: true,
@@ -70,7 +70,6 @@ const webpackConfig = merge(baseConfig, {
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
             },
-            chunks: ['admin', 'client'],
             // 如果打开 vendor 和 manifest 那么需要配置 chunksSortMode 保证引入 script 的顺序
             chunksSortMode: 'dependency'
         }),

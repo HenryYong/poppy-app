@@ -11,7 +11,7 @@ import config from './../config'
 import webpackConfig from './webpack.prod.conf'
 
 const prodConfig = config.build
-const spinner = ora('building for production env of admin')
+const spinner = ora('building for production env')
 
 spinner.start()
 

@@ -1,45 +1,51 @@
+/**
+ * client路由配置
+ * @author Henry Yang
+ */
+
 import Vue from 'vue'
 import Router from 'vue-router'
-import adminRoutes from './admin'
-import clientRoutes from './client'
 
-// admin框架页
-const Admin = () => import(
-    /* webpackChunkName: 'Admin' */
-    './../views/admin/index'
-)
+import About from './about'
+import Archives from './archives'
+import Categories from './categories'
+import Contact from './contact'
+import Tags from './tags'
+import Articles from './articles'
 
 // client框架页
 const Client = () => import(
     /* webpackChunkName: 'Client' */
-    './../views/client/index'
+    './../views/index'
 )
-// const None = () => import(
-//     /* webpackChunkName: 'None' */
-//     '../views/none'
-// )
+let routesArr = [
+    About,
+    Archives,
+    Categories,
+    Contact,
+    Tags,
+    Articles
+]
+let children = []
+let routes = []
 
 Vue.use(Router)
 
-// let routes = adminRoutes.concat(clientRoutes)
-let allRoutes = []
+routesArr.map(route => {
+    children.push(...route)
+})
 
-allRoutes.push(
-    {
-        path: '/admin',
-        component: Admin,
-        children: adminRoutes
-    },
+routes.push(
     {
         path: '',
         component: Client,
-        children: clientRoutes
+        children
     }
 )
 
 const router = new Router({
     mode: 'history',
-    routes: allRoutes
+    routes
 })
 
 router.beforeEach((to, from, next) => {

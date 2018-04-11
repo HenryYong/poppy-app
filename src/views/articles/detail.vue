@@ -3,7 +3,19 @@
     <article class="article-wrapper"
         v-loading="loading">
         <h2 class="article-title">{{ curArticle.title }}</h2>
+        <div class="article-info">
+            <p>发布时间：{{ localFormatTime(curArticle.create_time) }}</p>
+            <p>分类：{{ curArticle.category }}</p>
+        </div>
         <section class="article-content" id="marked_article"></section>
+        <div class="article-tags"
+            v-if="curArticle.tags">
+            <span class="article-tag-item"
+                v-for="tag of curArticle.tags.split(',')"
+                :key="tag">
+                {{ tag }}
+            </span>
+        </div>
     </article>
 </template>
 
@@ -12,6 +24,9 @@
     import hljs from 'highlight.js'
     import marked from 'marked'
     import { mapGetters } from 'vuex'
+    import {
+        formatTime
+    } from 'src/utils/utils'
 
     export default {
         data () {
@@ -26,6 +41,11 @@
             }),
             articleId () {
                 return this.$route.params.articleId
+            }
+        },
+        methods: {
+            localFormatTime (time) {
+                return formatTime(time)
             }
         },
         async mounted () {
@@ -76,8 +96,14 @@
             padding-bottom: 20px;
             border-bottom: 1px solid $borderColor;
         }
+        .article-info {
+            padding: 20px 0;
+            font-size: 12px;
+            color: $fontLight;
+        }
         .article-content {
-            padding-top: 40px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid $borderColor;
             & > p {
                 line-height: 2;
             }
@@ -151,13 +177,20 @@
 					}
 				}
 			}
-			ol{
+			ol,
+            ul{
 				padding-left: 15px;
 				margin-bottom: 10px;
 				li{
 					line-height: 2;
 				}
 			}
+            ol > li{
+                list-style-type: decimal;
+            }
+            ul > li {
+                list-style-type: disc;
+            }
 			p + h3,
 			ol + h3{
 				margin-top: 30px;
@@ -169,7 +202,21 @@
 			}
 			iframe{
 				margin-bottom: 10px;
-			}
+            }
+            & > h2 {
+                margin-bottom: 10px;
+            }
+            & > p {
+                margin-bottom: 20px;
+            }
+        }
+        .article-tags {
+            font-style: italic;
+            font-size: 14px;
+            color: $fontLight;
+        }
+        .article-tag-item + .article-tag-item {
+            margin-left: 10px;
         }
     }
 </style>

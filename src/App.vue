@@ -16,7 +16,6 @@
     Vue.prototype.$message = Message
 
     export default {
-        
     }
 </script>
 

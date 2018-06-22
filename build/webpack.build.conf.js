@@ -90,6 +90,13 @@ const webpackConfig = merge(baseConfig, {
             )
         }),
         new webpack.optimize.CommonsChunkPlugin({
+            async: 'highlight',
+            minChunks: ({ resource } = {}) => (
+                resource
+                && resource.includes('highlight.js')
+            )
+        }),
+        new webpack.optimize.CommonsChunkPlugin({ // 将调用过两次的模块都打到twice.js中
             async: 'twice',
             minChunks: (module, count) => (count >= 2)
         }),

@@ -1,33 +1,32 @@
+const ArticlesWrapper = () => import(
+    /* webpackChunkName: ArticlesWrapper */
+    '../../views/blog/index'
+)
+
 // 文章列表页
 const ArticlesList = () => import(
     /* webpackChunkName: ArticlesList */
-    '../../views/articles/index'
+    '../../views/blog/list'
 )
 
 // 文章详情页
 const ArticleDetail = () => import(
     /* webpackChunkName: ArticleDetail */
-    '../../views/articles/detail'
+    '../../views/blog/detail'
 )
 
 const routes = [
     {
-        path: '',
-        redirect: {
-            name: 'ClientArticlesList'
-        }
-    },
-    {
-        path: 'articles',
-        name: 'ClientArticlesList',
+        path: '/blog',
+        name: 'ArticlesList',
         component: ArticlesList
     },
     {
-        path: 'articles/:articleId',
-        name: 'ClientArticleDetail',
+        path: '/blog/:articleId',
+        name: 'ArticleDetail',
         component: ArticleDetail,
         meta: {
-            name: 'ClientArticlesList'
+            name: 'ArticlesList'
         }
     }
 ]

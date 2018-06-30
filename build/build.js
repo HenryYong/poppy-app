@@ -10,7 +10,7 @@ import webpack from 'webpack'
 import config from './../config'
 import webpackConfig from './webpack.build.conf'
 
-const prodConfig = config.build
+const prodConfig = config.production
 const spinner = ora(`building for ${process.env.NODE_ENV} env`)
 
 spinner.start()

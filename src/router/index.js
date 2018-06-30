@@ -11,37 +11,35 @@ import Archives from './archives'
 import Categories from './categories'
 import Contact from './contact'
 import Tags from './tags'
-import Articles from './articles'
+import Blog from './blog'
 
-// client框架页
-const Client = () => import(
-    /* webpackChunkName: 'Client' */
-    './../views/index'
+// home
+const Home = () => import(
+    /* webpackChunkName: 'Home */
+    './../views/home'
 )
+
 let routesArr = [
     About,
     Archives,
     Categories,
     Contact,
     Tags,
-    Articles
+    Blog
 ]
-let children = []
 let routes = []
 
 Vue.use(Router)
 
 routesArr.map(route => {
-    children.push(...route)
+    routes.push(...route)
 })
 
-routes.push(
-    {
-        path: '',
-        component: Client,
-        children
-    }
-)
+routes.push({
+    path: '',
+    name: 'Home',
+    component: Home
+})
 
 const router = new Router({
     mode: 'history',

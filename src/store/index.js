@@ -40,10 +40,45 @@ export default new Vuex.Store({
                 id: 'ClientContact',
                 text: 'Contact'
             }
+        ],
+        topMenu: [
+            {
+                id: 'Home',
+                target: 'Home'
+            },
+            {
+                id: 'Blog',
+                target: 'ArticlesList'
+            },
+            {
+                icon: 'github',
+                target: 'https://github.com/HenryYong'
+            },
+            {
+                icon: 'segmentfault',
+                target: 'https://segmentfault.com/u/henryyong'
+            },
+            {
+                icon: 'stackoverflow',
+                target: 'https://stackoverflow.com/users/4064817/henry-yong'
+            },
+            {
+                icon: 'facebook',
+                target: 'https://www.facebook.com/HenryYongEndless'
+            },
+            {
+                icon: 'twitter',
+                target: 'https://twitter.com/Henry_Yangs'
+            // },
+            // {
+            //     icon: 'weibo',
+            //     target: ''
+            }
         ]
     },
     getters: {
-        getNavList: state => state.navList
+        getNavList: state => state.navList,
+        getTopMenu: state => state.topMenu
     },
     // 公共mutations
     mutations: {

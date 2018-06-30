@@ -91,6 +91,8 @@
     @import './../../styles/conf';
 
     .article-wrapper {
+        width: 900px;
+        margin: 80px auto 0;
         padding: 0 40px;
         .article-title {
             padding-bottom: 20px;

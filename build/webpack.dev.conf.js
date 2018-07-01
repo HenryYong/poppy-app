@@ -13,7 +13,7 @@ import config from './../config'
 // 合并webpack配置
 const webpackConfig = merge(baseConfig, {
     entry: {
-        'main': ['webpack-hot-middleware/client', './src/pre_main.js']
+        'main': ['webpack-hot-middleware/client', './src/main.js']
     },
     devtool: '#cheap-module-eval-source-map',
     plugins: [

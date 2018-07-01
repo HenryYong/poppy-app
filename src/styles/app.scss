@@ -57,3 +57,19 @@
         opacity: .8;
     }
 }
+
+.p-button {
+    display: block;
+    width: 70px;
+    margin: 0 auto;
+    padding: 7px 14px;
+    color: rgba(255, 255, 255, .9);
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+    &:hover {
+        color: #fff;
+        border-color: #fff;
+    }
+}

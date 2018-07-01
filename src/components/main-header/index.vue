@@ -50,6 +50,11 @@
                 'topMenu': 'getTopMenu'
             })
         },
+        watch: {
+            '$route' () {
+                this.onScroll()
+            }
+        },
         methods: {
             clickHandler (item) {
                 if (item.id) {

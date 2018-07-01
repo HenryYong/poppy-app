@@ -1,8 +1,8 @@
 <template>
     <article class="articles-list-wrapper">
           <banner
-            :bg-image="bannerImage"
-            :has-arrow="true">
+              :bg-image="bannerImage"
+              :has-arrow="true">
           </banner>
           <section class="articles-list-section">
               <div class="articles-list-item"

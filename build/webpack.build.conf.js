@@ -16,6 +16,7 @@ import OptimizeCSSAssetsPlguin from 'optimize-css-assets-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CompressionWebpackPlugin from 'compression-webpack-plugin'
 import bundleAnalyzer from 'webpack-bundle-analyzer'
+import HTMLWebpackScriptPlugin from './../src/plugins/html-webpack-script-plugin'
 
 import baseConfig from './webpack.base.conf'
 import config from './../config'
@@ -58,6 +59,14 @@ const webpackConfig = merge(baseConfig, {
             cssProcessorOptions: {
                 safe: true
             }
+        }),
+        new HTMLWebpackScriptPlugin({
+            paths: [
+                'https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js',
+                'https://unpkg.com/vue-router@3.0.1/dist/vue-router.js',
+                'https://unpkg.com/vuex@3.0.1/dist/vuex.js',
+                'https://unpkg.com/axios/dist/axios.min.js'
+            ]
         }),
         new HTMLWebpackPlugin({
             filename: resolve(config.production.assetsRoot + sep + config.production.assetsSubDirectory, '..') + '/index.html',
@@ -105,7 +114,13 @@ const webpackConfig = merge(baseConfig, {
                 ignore: ['.*']
             }
         ])
-    ]
+    ],
+    externals: {
+        'vue': 'Vue',
+        'vue-router': 'VueRouter',
+        'vuex': 'Vuex',
+        'axios': 'axios'
+    }
 })
 
 if (config.production.productionGzip) {

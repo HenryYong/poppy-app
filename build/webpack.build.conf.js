@@ -26,7 +26,7 @@ import {
 
 const webpackConfig = merge(baseConfig, {
     entry: {
-        'main': './src/main.js'
+        'main': './src/pre_main.js'
     },
     module: {
         // rules: styleLoaders({

@@ -24,7 +24,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .poppy-home {
         &-text {
             position: absolute;

@@ -4,8 +4,6 @@
  */
 
 import Vue from 'vue'
-import Vuex from 'vuex'
-import Router from 'vue-router'
 
 import store from './store'
 import router from './router'

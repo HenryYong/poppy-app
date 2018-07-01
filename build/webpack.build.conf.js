@@ -105,7 +105,10 @@ const webpackConfig = merge(baseConfig, {
                 ignore: ['.*']
             }
         ])
-    ]
+    ],
+    externals: {
+        vue: 'Vue'
+    }
 })
 
 if (config.production.productionGzip) {

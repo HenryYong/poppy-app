@@ -19,6 +19,11 @@ const Home = () => import(
     './../views/home'
 )
 
+const NotFound = () => import(
+    /* webpackChunkName: 'NotFound */
+    './../views/exception/404'
+)
+
 let routesArr = [
     About,
     Archives,
@@ -35,11 +40,18 @@ routesArr.map(route => {
     routes.push(...route)
 })
 
-routes.push({
-    path: '',
-    name: 'Home',
-    component: Home
-})
+routes.push(
+    {
+        path: '',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '*',
+        name: '404',
+        component: NotFound
+    }
+)
 
 const router = new Router({
     mode: 'history',

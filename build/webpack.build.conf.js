@@ -39,7 +39,7 @@ const webpackConfig = merge(baseConfig, {
     output: {
         path: config.production.assetsRoot,
         filename: assetsPath('js/[name].[chunkhash].js'),
-        chunkFilename: assetsPath('js/[name].[chunkhash].js')
+        chunkFilename: assetsPath('js/bundle.[name].[chunkhash].js')
     },
     plugins: [
         new webpack.DefinePlugin(config[process.env.NODE_ENV].envVar), // 根据当前编译环境引入不同的全局变量
@@ -89,13 +89,13 @@ const webpackConfig = merge(baseConfig, {
                 && resource.match(/\.js$/)
             )
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            async: 'common-lazy',
-            minChunks: ({ resource } = {}) => (
-                resource
-                && resource.includes('node_modules')
-            )
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     async: 'common-lazy',
+        //     minChunks: ({ resource } = {}) => (
+        //         resource
+        //         && resource.includes('node_modules')
+        //     )
+        // }),
         new webpack.optimize.CommonsChunkPlugin({
             async: 'highlight',
             minChunks: ({ resource } = {}) => (

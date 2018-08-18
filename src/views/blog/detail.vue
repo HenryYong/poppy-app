@@ -21,12 +21,23 @@
 
 <script>
     import exception from 'src/components/exception'
-    import hljs from 'highlight.js'
-    import marked from 'marked'
+    import hljs from 'highlight.js/lib/highlight.js'
+    import hlHTML from 'highlight.js/lib/languages/htmlbars.js'
+    import hlCSS from 'highlight.js/lib/languages/css.js'
+    import hlJavaScript from 'highlight.js/lib/languages/javascript.js'
+    import hlBash from 'highlight.js/lib/languages/bash.js'
+    import hlNginx from 'highlight.js/lib/languages/nginx.js'
+    import marked from 'marked/lib/marked'
     import { mapGetters } from 'vuex'
     import {
         formatTime
     } from 'src/utils/utils'
+
+    hljs.registerLanguage('html', hlHTML)
+    hljs.registerLanguage('css', hlCSS)
+    hljs.registerLanguage('javascript', hlJavaScript)
+    hljs.registerLanguage('bash', hlBash)
+    hljs.registerLanguage('nginx', hlNginx)
 
     export default {
         data () {
